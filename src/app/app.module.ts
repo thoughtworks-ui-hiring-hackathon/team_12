@@ -11,6 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ExploreComponent } from './explore/explore.component';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +23,14 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,
     MatCardModule,
     CommonModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
