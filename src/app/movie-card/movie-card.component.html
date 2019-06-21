@@ -1,0 +1,23 @@
+<mat-card class="movie-card" *ngIf="movie">
+  <!-- <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header> -->
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{movie.name}} <span><i class="material-icons">
+        favorite
+        </i></span>
+    </p>
+    <p>
+      {{movie.type}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <i class="material-icons">
+    star_rate
+  </i> <span><button mat-raised-button>Show more</button></span>
+  </mat-card-actions>
+</mat-card>

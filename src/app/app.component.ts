@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movie-app-scaffolding-angular';
+  links = [{
+    name: 'Home',
+    path: 'home'
+  },
+  {
+    name: 'Explore',
+    path: 'explore'
+  }];
+  activeLink = this.links[0].path;
+  background = '';
+  toggleBackground() {
+    this.background = this.background ? '' : 'primary';
+  }
+
 }
