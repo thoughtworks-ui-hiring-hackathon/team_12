@@ -1,0 +1,29 @@
+.movie-detail-card{
+.mat-card-image{
+  width: 100%;
+  height: 25rem;
+}
+}
+.details-container{
+  .left-panel, .right-panel{
+    width: 50%
+  }
+  .left-panel{
+    float:left;
+  }
+  .right-panel{
+    float: right;
+    table{
+      background-color: lightgray;
+    }
+  }
+  .movie-description{
+    color: gray;
+  }
+}
+
+.related-movies-container{
+  >div{
+    display: inline-block;
+  }
+}

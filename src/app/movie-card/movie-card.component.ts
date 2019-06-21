@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Movie } from '../movie';
 import { Router } from '@angular/router';
+import { RATINGS } from '../app.constant';
 
 @Component({
   selector: 'app-movie-card',
@@ -10,13 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movie;
-  ratings = [
-    { value: true },
-    { value: true },
-    { value: true },
-    { value: true },
-    { value: false }
-  ];
+  ratings = RATINGS;
   constructor(private router: Router) {
   }
 
@@ -24,7 +19,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   onClick() {
-    this.router.navigate(['/']).then(() => {
+    this.router.navigate(['/details/' + this.movie.id]).then(() => {
       console.log('navigated to movie details');
     });
   }
