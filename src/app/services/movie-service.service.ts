@@ -15,7 +15,7 @@ import { Movie } from '../movie';
 })
 export class MovieServiceService {
   apiUrl = 'https://api.themoviedb.org/3/movie';
-  apiKey = '4c0ce895939930c4fb2ba54f686b6b87';
+  apiKey = '';
   imageurl = 'https://image.tmdb.org/t/p/w500/';
   genreAPI = 'https://api.themoviedb.org/3/genre/movie';
 
@@ -50,12 +50,10 @@ export class MovieServiceService {
     const url = ` https://api.themoviedb.org/3/person/${actorId}?api_key=${this.apiKey}&language=en-US`;
   }
 
-  searchMovies(serchQuery: Observable<string>) {
+  searchMovies(serchQuery: string) {
     // tslint:disable-next-line:max-line-length
     const url = `https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&language=en-US&query=${serchQuery}&page=1&include_adult=false`;
-    return serchQuery.debounceTime(400)
-      .distinctUntilChanged()
-      .switchMap(term => this.http.get<{ results: Movie[] }>(url).map(res => res));
+    return this.http.get<{ results: Movie[] }>(url).map(res => res);
   }
 
 }
