@@ -13,13 +13,15 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieCardComponent,
     HomeComponent,
-    ExploreComponent
+    ExploreComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
