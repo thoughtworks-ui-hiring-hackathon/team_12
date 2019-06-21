@@ -27,6 +27,10 @@ export class AppComponent {
     this.movieSearch.GetGenres('list').subscribe(res => {
      this.dataService.SetGenresList(res);
     });
+
+    this.movieSearch.getMovieDetails('320288').subscribe(res => {
+      console.log('movie detail',res);
+     });
   }
 
   toggleBackground() {
