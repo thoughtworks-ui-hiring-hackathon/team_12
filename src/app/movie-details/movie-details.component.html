@@ -1,3 +1,69 @@
-<p>
-  movie-details works!
-</p>
+<mat-card class="movie-detail-card" *ngIf="movieDetails">
+  <!-- <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header> -->
+  <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500/'+movieDetails.poster_path" [alt]="movieDetails.title">
+  <mat-card-content>
+    <div class="details-container">
+      <div class="left-panel">
+        <div class="movie-title">
+          <h1>{{movieDetails.title}} </h1>
+        </div>
+        <span><i class="material-icons">
+            favorite
+          </i></span>
+        <div class="movie-description">
+          <h4>
+            {{movieDetails.overview}}
+          </h4>
+        </div>
+      </div>
+      <div class="right-panel">
+        <table cellpadding="5" cellspacing="5">
+          <td>
+            <tr>
+              Genre
+            </tr>
+            <tr>
+              Cast
+            </tr>
+            <tr>
+              Director
+            </tr>
+            <tr>
+              Movie Rating
+            </tr>
+          </td>
+          <td>
+            <tr>
+              <span *ngFor="let genre of movieDetails.genres">
+                {{genre.name}}
+              </span>
+            </tr>
+            <tr>
+              <span *ngFor="let castMember of movieDetails?.credits?.cast">
+                {{castMember.name}},
+              </span>
+            </tr>
+            <tr>
+              {{director?.name}}
+            </tr>
+            <tr>
+              <i class="material-icons" *ngFor="let rating of ratings" ngClass="{rating.value? 'star-rate':''}">
+                star_rate
+              </i>
+            </tr>
+          </td>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div class="related-movies-container">
+  <h2>Related Movies</h2>
+  <div *ngFor="let movie of relatedMovies">
+    <app-movie-card [movie]="movie"></app-movie-card>
+  </div>
+</div>

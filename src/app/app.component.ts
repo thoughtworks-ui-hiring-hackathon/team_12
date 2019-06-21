@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
     });
 
     this.movieSearch.getMovieDetails('320288').subscribe(res => {
-      console.log('movie detail',res);
-     });
+      console.log('movie detail', res);
+    });
   }
 
   toggleBackground() {

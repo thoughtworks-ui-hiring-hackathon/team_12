@@ -6,27 +6,26 @@ export interface Movie {
   overview: string;
   release_date: string;
   isFav: string;
-  credits:credit
+  credits: Credit;
   movieType: string;
-  genre_ids: string;
+  genres: string;
 }
 
-export interface credit{
-   casts:cast[];
-   crews:crew[];
+export interface Credit {
+  cast: Cast[];
+  crew: Crew[];
 }
 
-export interface crew {
-    credit_id:string;
-    department:string;
-    naame:string;
-    profile_path:string;
+export interface Crew {
+  credit_id: string;
+  department: string;
+  name: string;
+  profile_path: string;
 }
 
-export interface cast{
-
-    cast_id:string;
-    credit_id:string;
-    name:string;
-    profile_path:string;
+export interface Cast {
+  cast_id: string;
+  credit_id: string;
+  name: string;
+  profile_path: string;
 }
