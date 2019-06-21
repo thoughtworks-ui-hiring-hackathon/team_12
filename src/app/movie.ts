@@ -6,4 +6,6 @@ export interface Movie {
   overview: string;
   release_date: string;
   isFav: string;
+  movieType: string;
+  genre_ids: string;
 }

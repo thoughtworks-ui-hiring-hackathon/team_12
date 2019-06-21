@@ -16,8 +16,9 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <i class="material-icons">
+    <i class="material-icons" *ngFor="let rating of ratings" ngClass="{rating.value? 'star-rate':''}">
       star_rate
-    </i> <span><button mat-raised-button>Show more</button></span>
+    </i>
+    <span><button (click)="onClick()" mat-raised-button>Show more</button></span>
   </mat-card-actions>
 </mat-card>

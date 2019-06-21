@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../app/shared/data.service';
 import { MovieServiceService } from '../app/services/movie-service.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { MovieServiceService } from '../app/services/movie-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   links = [{
     name: 'Home',
     path: 'home'
@@ -18,8 +19,14 @@ export class AppComponent {
   activeLink = this.links[0].path;
   background = '';
 
-  constructor() {
+  constructor(private dataService: DataService, private movieSearch: MovieServiceService) {
 
+  }
+
+  ngOnInit() {
+    this.movieSearch.GetGenres('list').subscribe(res => {
+      this.dataService.SetGenresList(res);
+    });
   }
 
   toggleBackground() {
