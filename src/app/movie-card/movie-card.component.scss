@@ -1,18 +1,29 @@
 .movie-card{
   max-width: 100%;
   max-height: 20rem;
+  min-height: 16rem;
+  min-width: 12rem;
+  margin: 0 1rem 1rem 0;
   .mat-card-image{
-    width: 10rem;
-    height: 8rem;
-  }
-  .movie-title{
-    width: 80%;
+    width: 14rem;
+    height: 10rem;
   }
   .material-icons{
-    width: 24px;
+    width: 20px;
     height: 24px;
   }
   .star-rate{
     color: red;
   }
+  .movie-rating{
+    max-width: 7rem;
+    float:left;
+  }
+  .movie-detail{
+    float:right;
+
+  }
 }
+
+
+

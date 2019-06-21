@@ -5,9 +5,7 @@
         Latest
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div *ngFor="let movie of latestMovies" class="latest-movies-container">
-      <app-movie-card [movie]="movie"></app-movie-card>
-    </div>
+      <app-movie-card *ngFor="let movie of latestMovies"  class="latest-movies-container" [movie]="movie"></app-movie-card>
   </mat-expansion-panel>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
