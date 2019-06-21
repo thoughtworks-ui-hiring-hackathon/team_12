@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,Subject  } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { movie } from '../movie';
+import { Movie } from '../movie';
 
 
 @Injectable({
@@ -16,21 +16,21 @@ export class MovieServiceService {
   imageurl = 'https://image.tmdb.org/t/p/w500/';
   genreAPI = 'https://api.themoviedb.org/3/genre/movie';
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   fetchMovie(type:string){
-     const url = `${this.apiUrl}/${type}?api_key=${this.apiKey}`;
-     return this.http.get<movie[]>(url).map(res=>
-      this.parseResult(res));
+   GetMovies(type: string) {
+    const url = `${this.apiUrl}/${type}?api_key=${this.apiKey}`;
+    return this.http.get<{ results: Movie[] }>(url).map(res => res.results);
   }
-
-    private parseResult(response: movie[]){
-      return response['results'];
-    }
-  
+ 
     GetGenres(type:string){
     const url = `${this.genreAPI}/${type}?api_key=${this.apiKey}`;
     return this.http.get<any[]>(url).map(res=>res['genres']);
+   }
+
+   getTrendingMovie(){
+    const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.apiKey}`;
+    return this.http.get<{ results: Movie[] }>(url).map(res => res.results);
    }
 
 }
