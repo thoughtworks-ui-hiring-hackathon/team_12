@@ -21,20 +21,20 @@ export class MovieServiceService {
 
   constructor(private http: HttpClient) { }
 
-   GetMovies(type: string) {
+  GetMovies(type: string) {
     const url = `${this.apiUrl}/${type}?api_key=${this.apiKey}`;
     return this.http.get<{ results: Movie[] }>(url).map(res => res.results);
   }
- 
-    GetGenres(type:string){
-    const url = `${this.genreAPI}/${type}?api_key=${this.apiKey}`;
-    return this.http.get<any[]>(url).map(res=>res['genres']);
-   }
 
-   getTrendingMovie(){
+  GetGenres(type: string) {
+    const url = `${this.genreAPI}/${type}?api_key=${this.apiKey}`;
+    return this.http.get<any>(url).map(res => res.genres);
+  }
+
+  getTrendingMovie() {
     const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${this.apiKey}`;
     return this.http.get<{ results: Movie[] }>(url).map(res => res.results);
-   }
+  }
 
    getMovieDetails(id:string){
      const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}&language=en-US&append_to_response=credits`

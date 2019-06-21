@@ -1,5 +1,6 @@
-.movies-container{
+.latest-movies-container, .most-watched-movies-container, .trending-movies-container{
   display: flex;
   flex-direction: row;
   flex-flow: row;
+  float: left;
 }

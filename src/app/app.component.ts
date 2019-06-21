@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../app/shared/data.service';
-import { MovieServiceService } from '../app/services/movie-service.service'
+import { MovieServiceService } from '../app/services/movie-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   links = [{
     name: 'Home',
     path: 'home'
@@ -19,13 +19,13 @@ export class AppComponent {
   activeLink = this.links[0].path;
   background = '';
 
-  constructor(private dataService: DataService,private movieSearch:MovieServiceService) {
+  constructor(private dataService: DataService, private movieSearch: MovieServiceService) {
 
   }
-  
+
   ngOnInit() {
     this.movieSearch.GetGenres('list').subscribe(res => {
-     this.dataService.SetGenresList(res);
+      this.dataService.SetGenresList(res);
     });
 
     this.movieSearch.getMovieDetails('320288').subscribe(res => {

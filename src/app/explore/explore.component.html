@@ -1,7 +1,7 @@
 <input (keyup)="searchTerm$.next($event.target.value)">
 
 <ul *ngIf="results">
-  <li *ngFor="let movie of results | slice:0:9" class="movies-container">
+  <li *ngFor="let movie of results | slice:0:9" class="latest-movies-container">
       <app-movie-card [movie]="movie"></app-movie-card>
   </li>
 </ul>
