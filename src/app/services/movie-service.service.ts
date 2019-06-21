@@ -50,10 +50,12 @@ export class MovieServiceService {
     const url = ` https://api.themoviedb.org/3/person/${actorId}?api_key=${this.apiKey}&language=en-US`;
   }
 
-  searchMovies(serchQuery: string) {
+  searchMovies(serchQuery: Observable<string>) {
     // tslint:disable-next-line:max-line-length
-    const url = `https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&language=en-US&query=${serchQuery}&page=1&include_adult=false`;
-    return this.http.get<{ results: Movie[] }>(url).map(res => res);
+    const url = `https://api.themoviedb.org/3/search/multi?api_key=${this.apiKey}&language=en-US&query=${serchQuery.source}&page=1&include_adult=false`;
+    return serchQuery.debounceTime(400)
+      .distinctUntilChanged()
+      .switchMap(term => this.http.get<{ results: Movie[] }>(url).map(res => res));
   }
 
 }
