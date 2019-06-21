@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieServiceService } from '../services/movie-service.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,11 @@ export class HomeComponent implements OnInit {
       type: 'Action- Adventure'
     }
   ];
-  constructor() { }
+  constructor(private movieSearch: MovieServiceService) { }
 
   ngOnInit() {
+    this.movieSearch.fetchMovie('popular').subscribe(response => {
+      this.movies = response;
+    });
   }
-
 }

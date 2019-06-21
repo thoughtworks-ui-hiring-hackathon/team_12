@@ -6,7 +6,7 @@ import { MovieServiceService } from '../app/services/movie-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   links = [{
     name: 'Home',
     path: 'home'
@@ -18,13 +18,8 @@ export class AppComponent implements OnInit {
   activeLink = this.links[0].path;
   background = '';
 
-  constructor(private movieSearch: MovieServiceService) {
+  constructor() {
 
-  }
-  ngOnInit() {
-    this.movieSearch.fetchMovie('popular').subscribe(res => {
-      console.log('result', res);
-    });
   }
 
   toggleBackground() {
