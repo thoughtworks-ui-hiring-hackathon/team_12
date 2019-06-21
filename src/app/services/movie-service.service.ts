@@ -30,8 +30,7 @@ export class MovieServiceService {
   
     GetGenres(type:string){
     const url = `${this.genreAPI}/${type}?api_key=${this.apiKey}`;
-    return this.http.get<any[]>(url).map(res=>
-      res['genres']);
+    return this.http.get<any[]>(url).map(res=>res['genres']);
    }
 
 }

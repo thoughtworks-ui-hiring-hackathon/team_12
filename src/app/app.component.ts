@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieServiceService} from '../app/services/movie-service.service'
-import { DataService } from '../app/shared/data.service'; 
+import { DataService } from '../app/shared/data.service';
+import { MovieServiceService } from '../app/services/movie-service.service'
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,29 @@ import { DataService } from '../app/shared/data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'movie-app-scaffolding-angular';
-  
-  constructor(private movieSearch : MovieServiceService,private dataService:DataService){
+  links = [{
+    name: 'Home',
+    path: 'home'
+  },
+  {
+    name: 'Explore',
+    path: 'explore'
+  }];
+  activeLink = this.links[0].path;
+  background = '';
+
+  constructor(private dataService: DataService,private movieSearch:MovieServiceService) {
 
   }
-  ngOnInit(){
-    this.movieSearch.fetchMovie('popular').subscribe(res=>{
-      console.log('result',res);
-    })
-    
-    this.movieSearch.GetGenres('list').subscribe(res=>{
-      this.dataService.SetGenresList(res);
-    })
+  
+  ngOnInit() {
+    this.movieSearch.GetGenres('list').subscribe(res => {
+     this.dataService.SetGenresList(res);
+    });
   }
+
+  toggleBackground() {
+    this.background = this.background ? '' : 'primary';
+  }
+
 }
