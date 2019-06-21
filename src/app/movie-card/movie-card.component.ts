@@ -25,8 +25,8 @@ export class MovieCardComponent implements OnInit {
 
   onClick() {
     this.router.navigate(['/']).then(() => {
-      console.log("navigated to movie details");
-    })
+      console.log('navigated to movie details');
+    });
   }
 
 
